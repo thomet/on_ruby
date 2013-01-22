@@ -8,5 +8,4 @@ node "onruby" {
   include passenger
   include memcache
   include mysql
-  include sendmail
 }
