@@ -1,10 +1,4 @@
 class mysql {
-  exec { "apt_update":
-    unless      => "test -e /usr/bin/mysql",
-    command     => "/usr/bin/apt-get update",
-    user        => root,
-    before      => Package[mysql-server],
-  }
   package { "mysql-server":
     ensure  => installed,
     before  => File["/etc/mysql/my.cnf"],

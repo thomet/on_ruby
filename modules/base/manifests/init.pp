@@ -8,4 +8,7 @@ class base {
   package { "nodejs":
     ensure => installed,
   }
+  exec { "apt_update":
+    command => "/usr/bin/apt-get update",
+  }
 }
