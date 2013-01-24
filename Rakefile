@@ -6,3 +6,8 @@ require File.expand_path('../config/application', __FILE__)
 require "rake"
 
 OnRuby::Application.load_tasks
+
+desc "lint puppet"
+task :lint do
+  sh 'puppet-lint --no-80chars-check --with-filename --with-context puppet'
+end

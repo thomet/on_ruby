@@ -3,6 +3,7 @@ ruby "1.9.3"
 
 gem "thin",         require: false
 gem "foreman",      require: false
+gem "rake",         require: false
 
 gem "rails",                  "3.2.9"
 gem "slim-rails",             "1.0.3"
@@ -41,6 +42,7 @@ group :development do
   gem "rack-mini-profiler", "0.1.22"
   gem "taps",               require: false
   gem "capistrano",         require: false
+  gem "puppet-lint",        require: false
 end
 
 group :development, :test, :caching do
