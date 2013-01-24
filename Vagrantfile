@@ -7,8 +7,8 @@ Vagrant::Config.run do |config|
   config.vm.network :hostonly, "176.58.97.120"
 
   config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "manifests"
-    puppet.module_path    = "modules"
+    puppet.manifests_path = "puppet/manifests"
+    puppet.module_path    = "puppet/modules"
     puppet.manifest_file  = "base.pp"
   end
 end
