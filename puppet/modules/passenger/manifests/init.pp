@@ -1,40 +1,41 @@
+# compiles and installs a custom passenger
 class passenger {
-  package { "libcurl4-openssl-dev":
+  package { 'libcurl4-openssl-dev':
     ensure  => present,
   }
-  package { "apache2-prefork-dev":
+  package { 'apache2-prefork-dev':
     ensure  => present,
   }
-  package { "libapr1-dev":
+  package { 'libapr1-dev':
     ensure  => present,
   }
-  package { "libaprutil1-dev":
+  package { 'libaprutil1-dev':
     ensure  => present,
   }
-  exec { "install_passenger":
+  exec { 'install_passenger':
     user    => root,
     group   => root,
-    unless  => "ls /usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.18/",
-    command => "/usr/local/bin/gem install passenger -v=3.0.18",
+    unless  => 'ls /usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.18/',
+    command => '/usr/local/bin/gem install passenger -v=3.0.18',
     require => Package[apache2, libcurl4-openssl-dev, apache2-prefork-dev, libapr1-dev, libaprutil1-dev],
   }
-  exec { "passenger_apache_module":
-    path    => "/bin:/usr/bin:/usr/local/apache2/bin/",
+  exec { 'passenger_apache_module':
+    path    => '/bin:/usr/bin:/usr/local/apache2/bin/',
     creates => '/usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.18/ext/apache2/mod_passenger.so',
-    command => "/usr/local/bin/passenger-install-apache2-module --auto",
+    command => '/usr/local/bin/passenger-install-apache2-module --auto',
     notify  => Service['apache2'],
     require => Exec['install_passenger'],
   }
-  file { "/usr/local/bin/hor_ruby_wrapper_script":
+  file { '/usr/local/bin/hor_ruby_wrapper_script':
     owner   => root,
     group   => root,
-    mode    => 0755,
+    mode    => '0755',
     before  => File[passenger_conf],
-    content => template("passenger/hor_ruby_wrapper_script.erb"),
+    content => template('passenger/hor_ruby_wrapper_script.erb'),
   }
-  file { "/etc/apache2/conf.d/passenger.conf":
-    source  => "puppet:///modules/passenger/passenger.conf",
-    alias   => "passenger_conf",
+  file { '/etc/apache2/conf.d/passenger.conf':
+    source  => 'puppet:///modules/passenger/passenger.conf',
+    alias   => 'passenger_conf',
     notify  => Service[apache2],
   }
 }

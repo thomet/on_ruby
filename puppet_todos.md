@@ -9,4 +9,8 @@
 - look at rodjek repos
 - have a look at librarian-puppet
 - try using hiera for passwords and keys
+- extract only parts from configs, that really change
+  - sites_enabled
+  - mysql (what file was that?)
 - have a look at brightbox puppet modules
+  - use passenger package instead of compiling our own

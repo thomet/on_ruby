@@ -1,17 +1,19 @@
+# default file settings
 File {
   owner => root,
   group => root,
   mode  => 0644,
 }
+# default path settings
 Exec {
-  path => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
 }
-
+# add a stage that runs before default stage
 stage { 'first':
-  before => Stage['main'] # <- das hier ist die default stage
+  before => Stage['main']
 }
-
-node "onruby" {
+# configure the main node
+node 'onruby' {
   class { 'base': stage => first }
   include heroku
   include capistrano

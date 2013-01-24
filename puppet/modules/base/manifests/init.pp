@@ -1,14 +1,17 @@
+# installs some basic tools and performs basic setup
 class base {
-  file { "/etc/hosts":
-    source => "puppet:///modules/base/hosts"
+  file { '/etc/hosts':
+    source => 'puppet:///modules/base/hosts'
   }
-  package { "vim":
+  package { 'vim':
     ensure => present,
   }
-  package { "nodejs":
+  # needed for asset-pipeline
+  package { 'nodejs':
     ensure => installed,
   }
-  exec { "apt_update":
-    command => "/usr/bin/apt-get update",
+  # update apt or mysql install will fail
+  exec { 'apt_update':
+    command => '/usr/bin/apt-get update',
   }
 }

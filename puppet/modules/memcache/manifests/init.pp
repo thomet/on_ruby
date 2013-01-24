@@ -1,14 +1,15 @@
+# installs default memcached package
 class memcache {
-  package { "memcached":
+  package { 'memcached':
     ensure => present,
     before => Service[memcached],
   }
-  service { "memcached":
+  service { 'memcached':
     ensure    => true,
     enable    => true,
-    subscribe => File["/etc/memcached.conf"]
+    subscribe => File['/etc/memcached.conf']
   }
-  file { "/etc/memcached.conf":
-    source => "puppet:///modules/memcache/memcached.conf",
+  file { '/etc/memcached.conf':
+    source => 'puppet:///modules/memcache/memcached.conf',
   }
 }
