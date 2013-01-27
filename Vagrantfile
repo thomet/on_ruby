@@ -4,7 +4,7 @@ Vagrant::Config.run do |config|
   config.vm.host_name = "onruby.de"
   config.vm.forward_port 22, 2222, :auto => true
   config.vm.forward_port 80, 4567
-  config.vm.network :hostonly, "176.58.97.120"
+  config.vm.network :hostonly, "33.33.13.37"
 
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "puppet/manifests"
