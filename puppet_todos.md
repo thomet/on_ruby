@@ -1,8 +1,3 @@
-- add documentation for puppet bootstrap
-  - add apt.puppetlabs.com
-  - add ssh keys
-- create a subdir for puppet
-- create a rake task to execute puppet on the server
 - add puppet-rvm module for ruby management
 - add puppet-lint gem and use it (add it to SublimeLinter at best)
 - try puppet-rspec and check if that makes sense

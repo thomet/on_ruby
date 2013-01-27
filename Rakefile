@@ -8,6 +8,11 @@ require "rake"
 OnRuby::Application.load_tasks
 
 desc "lint puppet"
-task :lint do
+task :puppet_lint do
   sh 'puppet-lint --no-80chars-check --with-filename --with-context puppet'
+end
+
+desc "run puppet"
+task :puppet_apply do
+  sh 'sudo puppet apply --verbose --modulepath=puppet/modules puppet/manifests/base.pp'
 end

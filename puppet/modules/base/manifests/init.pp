@@ -6,6 +6,9 @@ class base {
   package { 'vim':
     ensure => present,
   }
+  package { 'rubygems':
+    ensure => present,
+  }
   # needed for asset-pipeline
   package { 'nodejs':
     ensure => installed,
