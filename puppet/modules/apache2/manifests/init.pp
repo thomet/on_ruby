@@ -2,22 +2,17 @@
 class apache2 {
   package { 'apache2':
     ensure  => present,
-    before  => File['/etc/apache2/apache2.conf'],
+    before  => Package['libapache2-mod-passenger'],
+  }
+  # TODO (ps) how to pass ENV varaibles now?
+  package { 'libapache2-mod-passenger':
+    ensure  => present,
   }
   service { 'apache2':
     ensure     => running,
     enable     => true,
     hasrestart => true,
-    require    => Exec[install_passenger],
-    subscribe  => [
-      File['/etc/apache2/apache2.conf'],
-      File['/etc/apache2/sites-enabled/onruby.conf'],
-      File['/usr/local/bin/hor_ruby_wrapper_script']
-    ],
-  }
-  file { '/etc/apache2/apache2.conf':
-    ensure => present,
-    source => 'puppet:///modules/apache2/apache2.conf',
+    subscribe  => File['/etc/apache2/sites-enabled/onruby.conf'],
   }
   file { '/etc/apache2/sites-enabled/onruby.conf':
     ensure => present,

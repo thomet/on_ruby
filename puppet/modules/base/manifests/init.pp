@@ -13,8 +13,4 @@ class base {
   package { 'nodejs':
     ensure => installed,
   }
-  # update apt or mysql install will fail
-  exec { 'apt_update':
-    command => '/usr/bin/apt-get update',
-  }
 }

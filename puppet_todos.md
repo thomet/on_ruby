@@ -1,11 +1,9 @@
+- use a blank base-box (http://www.vagrantbox.es/)
 - add puppet-rvm module for ruby management
-- add puppet-lint gem and use it (add it to SublimeLinter at best)
-- try puppet-rspec and check if that makes sense
 - look at rodjek repos
 - have a look at librarian-puppet
+- add versions to modules (mysql, apache passenger)
 - try using hiera for passwords and keys
 - extract only parts from configs, that really change
   - sites_enabled
   - mysql (what file was that?)
-- have a look at brightbox puppet modules
-  - use passenger package instead of compiling our own

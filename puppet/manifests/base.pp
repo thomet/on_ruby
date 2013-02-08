@@ -14,11 +14,11 @@ stage { 'first':
 }
 # configure the main node
 node 'onruby' {
-  class { 'base': stage => first }
+  class { 'apt': stage => first }
+  include base
   include heroku
   include capistrano
   include apache2
-  include passenger
   include memcache
   include mysql
 }

@@ -6,7 +6,7 @@ set :deploy_to,     "/var/onruby"
 set :use_sudo,      false
 set :deploy_via,    :copy
 set :copy_strategy, :export
-set :branch,        "capistrano"
+set :branch,        "puppet_and_capistrano"
 
 set :application, "onruby"
 set :scm,         :git
