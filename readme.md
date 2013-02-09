@@ -84,6 +84,14 @@ ActiveAdmin is mounted under */admin* of your label, so it's *hamburg.onruby.de/
 
 ![ActiveAdmin](http://f.cl.ly/items/2w3P211I0a032u2x1k3k/Bildschirmfoto%202012-07-23%20um%2023.09.59.png)
 
+## Vagrant
+
+- install base box (URL HERE)
+- vagrant up
+- vagrant provision
+- cap deploy:setup
+- cap deploy:cold
+
 ## License
 
 "THE BEER-WARE LICENSE" (Revision 42):

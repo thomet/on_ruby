@@ -21,6 +21,7 @@ gem "whitelabel",             "0.2.0"
 gem "newrelic_rpm",           "3.5.0"
 gem "dalli",                  "2.1.0"
 gem "exception_notification", "3.0.0"
+gem "unicorn",                "4.6.0"
 
 gem "activeadmin", git: "https://github.com/gregbell/active_admin.git", ref: "91c47b4fad79a1daa1e2bf070a120154b3b36818"
 
@@ -41,7 +42,12 @@ end
 group :development do
   gem "rack-mini-profiler", "0.1.22"
   gem "taps",               require: false
+end
+
+group :deployment do
   gem "capistrano",         require: false
+  gem "rvm-capistrano",     require: false
+  gem "capistrano-unicorn", require: false
   gem "puppet-lint",        require: false
 end
 

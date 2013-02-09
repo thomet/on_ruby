@@ -12,6 +12,10 @@ set :application, "onruby"
 set :scm,         :git
 set :repository,  "https://github.com/phoet/on_ruby.git"
 
+require 'rvm/capistrano'
+require 'capistrano-unicorn'
+
+
 # TODO use a stage for vagrant vm
 ssh_options[:port] = 2222
 server "localhost", :web, :app, :db, :primary => true
@@ -22,11 +26,22 @@ after "deploy:restart", "deploy:cleanup"
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-  end
-  task :copy_in_database_yml, :roles => :app, :except => { :no_release => true }  do
+  task :copy_production_configs, :roles => :app, :except => { :no_release => true }  do
     run "cp #{shared_path}/config/database.yml #{latest_release}/config/"
+    run "cp #{shared_path}/config/secret.properties #{latest_release}/config/"
   end
 end
-before "deploy:assets:precompile", "deploy:copy_in_database_yml"
+
+before "deploy:assets:precompile", "deploy:copy_production_configs"
+
+set :rvm_type, :user
+set :rvm_install_type, :stable
+set :rvm_install_ruby, :install
+set :rvm_ruby_string, 'ruby-1.9.3-p385@on_ruby'
+
+before 'deploy', 'rvm:install_rvm'
+before 'deploy', 'rvm:install_ruby'
+before 'deploy:setup', 'rvm:install_rvm'
+
+after 'deploy:restart', 'unicorn:reload'
+

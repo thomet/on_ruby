@@ -22,6 +22,13 @@ class capistrano {
     group  => deployer,
     mode   => '0600',
   }
+  file { '/var/onruby/shared/config/secret.properties':
+    ensure => present,
+    source => 'puppet:///modules/capistrano/secret.properties',
+    owner  => deployer,
+    group  => deployer,
+    mode   => '0600',
+  }
   file { '/home/deployer/.ssh/':
     ensure  => directory,
     owner   => deployer,

@@ -18,7 +18,7 @@ node 'onruby' {
   include base
   include heroku
   include capistrano
-  include apache2
+  include nginx
   include memcache
   include mysql
 }
