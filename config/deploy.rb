@@ -13,8 +13,7 @@ set :scm,         :git
 set :repository,  "https://github.com/phoet/on_ruby.git"
 
 namespace :deploy do
-  task :copy_production_configs, :roles => :app, :except => { :no_release => true }  do
-    run "cp #{shared_path}/config/database.yml #{latest_release}/config/"
+  task :copy_production_configs, :roles => :app, :except => { :no_release => true } do
     run "cp #{shared_path}/config/secret.properties #{latest_release}/config/"
   end
 end

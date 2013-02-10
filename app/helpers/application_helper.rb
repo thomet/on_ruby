@@ -1,38 +1,5 @@
 # encoding: UTF-8
 module ApplicationHelper
-  def title
-    I18n.tw("title")
-  end
-
-  def subtitle
-    I18n.tw("subtitle")
-  end
-
-  def contributors
-    {
-      phoet:          "Peter Schröder",
-      rubiii:         "Daniel Harrington",
-      ralph:          "Ralph von der Heyden",
-      dennisreimann:  "Dennis Reimann",
-      jhilden:        "Jakob Hilden",
-      SweeD:          "Markus Schwed",
-      nistude:        "Nikolay Sturm",
-      basiszwo:       "Stefan Botzenhart",
-      mustangore:     "Sébastien Jelsch",
-    }.map {|key, value| "#{key} (#{value})"}.join(" - ")
-  end
-
-  def page_title
-    "#{title} - #{content_for?(:page_title) ? content_for(:page_title) : subtitle}"
-  end
-
-  def mobile_title
-    content_for?(:mobile_title) ? content_for(:mobile_title) : I18n.tw('title')
-  end
-
-  def meta_desc
-    "#{page_title} - #{I18n.tw("meta_desc")}"
-  end
 
   def whitelabel_stylesheet_link_tag
     link = "labels/#{Whitelabel[:label_id]}"
@@ -42,6 +9,19 @@ module ApplicationHelper
   def whitelabel_javascript_include_tag
     link = "labels/#{Whitelabel[:label_id]}"
     javascript_include_tag link if File.exists? Rails.root.join("app/assets/javascripts/#{link}.coffee")
+  end
+
+  def browser_icon
+    icon 'shortcut icon'
+  end
+
+  def touch_icon
+    icon 'apple-touch-icon-precomposed'
+  end
+
+  def icon(type)
+    path = image_path Whitelabel.label ? "labels/#{Whitelabel[:label_id]}.ico" : "favicon.ico"
+    tag :link, rel: type, href: path
   end
 
   def job_description(job)
@@ -54,7 +34,7 @@ module ApplicationHelper
 
   def link_to_route(location)
     content_tag :p, class: :meta do
-      content_tag(:span, link_to(location.full_address, "#route"), class: 'map-icon') +
+      content_tag(:span, link_to(location.address, "#route"), class: 'map-icon') +
       " #{t("show.at")} " +
       content_tag(:span, link_to_location(location), class: 'open-icon')
     end

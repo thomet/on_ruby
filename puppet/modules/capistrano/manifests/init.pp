@@ -15,13 +15,6 @@ class capistrano {
     group  => deployer,
     mode   => '0755',
   }
-  file { '/var/onruby/shared/config/database.yml':
-    ensure => present,
-    source => 'puppet:///modules/capistrano/database.yml',
-    owner  => deployer,
-    group  => deployer,
-    mode   => '0600',
-  }
   file { '/var/onruby/shared/config/secret.properties':
     ensure => present,
     source => 'puppet:///modules/capistrano/secret.properties',
@@ -42,8 +35,5 @@ class capistrano {
     owner   => deployer,
     group   => deployer,
     mode    => '0600',
-  }
-  package { 'bundler':
-    provider => gem,
   }
 }

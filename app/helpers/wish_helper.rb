@@ -1,5 +1,4 @@
 # encoding: UTF-8
-
 module WishHelper
   def stars(wish)
     5.times.map do |n|
@@ -17,6 +16,6 @@ module WishHelper
   end
 
   def meta(wish)
-    raw t("wish.meta", link: link_to(wish.user.nickname, wish.user), count: wish.votes.count, stars: wish.stars)
+    raw t("wish.meta", link: link_to(wish.user.name, wish.user), count: wish.votes.count, stars: wish.stars)
   end
 end

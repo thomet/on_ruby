@@ -2,6 +2,8 @@
 class ApplicationController < ActionController::Base
   include MobileDetection
 
+  _404 = ->{ Rails.logger.warn "render 404 with params #{params}" and head 404 }
+
   protect_from_forgery
 
   before_filter :setup
@@ -11,7 +13,8 @@ class ApplicationController < ActionController::Base
 
   cache_sweeper :index_sweeper
 
-  rescue_from ActiveRecord::RecordNotFound, with: ->{ head 404 }
+  rescue_from ActiveRecord::RecordNotFound, with: _404
+  rescue_from ActionView::MissingTemplate,  with: _404
 
   expose(:jobs)       { Job.shuffled }
   expose(:main_user)  { User.main }
@@ -50,7 +53,7 @@ class ApplicationController < ActionController::Base
 
   def setup
     reset_thread_locales
-    switch_label unless %w(home_labels misc_sitemap).include?("#{controller_name}_#{action_name}")
+    switch_label
     switch_locale
     prepare_for_mobile
   end
@@ -61,6 +64,8 @@ class ApplicationController < ActionController::Base
   end
 
   def switch_label
+    controller_action = "#{controller_name}_#{action_name}"
+    return if %w(home_labels misc_sitemap).include?(controller_action)
     unless Usergroup.switch_by_request(request)
       redirect_to labels_url(subdomain: false)
     end

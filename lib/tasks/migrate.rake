@@ -1,4 +1,29 @@
 namespace :migrate do
+  desc "delete inactive users"
+  task :delete_inactive => [:environment] do
+    Whitelabel.label = Whitelabel.label_for("hamburg")
+    inactive = User.unscoped.reject do |user|
+      participations  = Participant.unscoped.find_by_user_id(user.id)
+      events          = Event.unscoped.find_by_user_id(user.id)
+      materials       = Material.unscoped.find_by_user_id(user.id)
+      topics          = Topic.unscoped.find_by_user_id(user.id)
+      wishes          = Wish.unscoped.find_by_user_id(user.id)
+      votes           = Vote.unscoped.find_by_user_id(user.id)
+      participations || events || materials || topics || wishes || votes
+    end
+    inactive.map(&:delete)
+  end
+
+  desc "migrate data for login"
+  task :add_login_column => [:environment] do
+    Whitelabel.label = Whitelabel.label_for("hamburg")
+    User.unscoped.each do |user|
+      puts "migrate user with id #{user.id} to have twitter handle #{user.nickname}"
+      user.update_attribute(:twitter, user.nickname) unless user.twitter
+      user.update_attribute(:github, user.nickname) unless user.github
+    end
+  end
+
   desc "extracts data from cologne-rb"
   task :extract_cologne_data => [:environment] do
     [Authorization, Event, Location, Material, Participant, Topic, User, Vote, Wish].each do |model|

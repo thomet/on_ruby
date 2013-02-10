@@ -1,13 +1,15 @@
-- content_for :page_title, user.name
-
 section
-  h3= t("profile.edit")
+  h3= t "profile.edit"
   ul= render 'home/users_list', users: [user]
 
   = semantic_form_for user do |f|
     = f.input :name
-    br
-    = f.input :github, input_html: { placeholder: 'GitHub Username' }
+    - unless user.with_provider? :twitter
+        br
+        = f.input :twitter, input_html: { placeholder: 'Twitter handle' }
+    - unless user.with_provider? :github
+        br
+        = f.input :github, input_html: { placeholder: 'GitHub handle' }
     br
     = f.input :freelancer
     br
@@ -15,4 +17,6 @@ section
     br
     = f.input :hide_jobs
     br
-    = f.action(:submit)
+    = f.action :submit
+
+  = button_to t("profile.remove_account"), current_user, method: :delete, confirm: t("profile.remove_confirm")
