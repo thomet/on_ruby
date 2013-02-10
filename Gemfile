@@ -26,13 +26,14 @@ gem "unicorn",                "4.6.0"
 gem "activeadmin", git: "https://github.com/gregbell/active_admin.git", ref: "91c47b4fad79a1daa1e2bf070a120154b3b36818"
 
 group :assets do
-  gem "jquery-rails",         "2.1.3"
-  gem "jquery_mobile_rails",  "1.2.0"
-  gem "leaflet-rails",        "0.4.5"
-  gem "compass",              "0.12.alpha.4"
-  gem "sass-rails",           "3.2.5"
-  gem "uglifier",             "1.3.0"
-  gem "coffee-rails",         "3.2.2"
+  gem "jquery-rails",           "2.1.3"
+  gem "jquery_mobile_rails",    "1.2.0"
+  gem "leaflet-rails",          "0.4.5"
+  gem "compass",                "0.12.alpha.4"
+  gem "sass-rails",             "3.2.5"
+  gem "uglifier",               "1.3.0"
+  gem "coffee-rails",           "3.2.2"
+  gem "turbo-sprockets-rails3", "0.3.6"
 end
 
 group :production do
