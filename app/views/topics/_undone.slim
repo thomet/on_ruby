@@ -1,0 +1,6 @@
+- if topics.present?
+  #undone
+    h3= t("home.new_topics")
+    ul.undone.clearfix
+      - topics.each do |wish|
+        li= link_to_wish wish
