@@ -1,6 +1,6 @@
 - if topics.present?
   #done
     h3= t("home.old_topics")
-    ul.clearfix
-      - topics.each do |wish|
-        li= link_to_wish wish
+    ul.more-list.clearfix
+      - topics.each do |topic|
+        li= link_to_topic topic

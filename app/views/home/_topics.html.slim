@@ -5,5 +5,4 @@
   = render 'users/list', users: organizers
   p== t("home.engage")
   = button_to t("home.add_topic"), new_topic_path, method: :get
-  = render 'topics/undone', topics: topics_undone
-  = render 'topics/done', topics: topics_done
+  = render 'topics/undone', topics: open_topics

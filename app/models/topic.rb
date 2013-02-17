@@ -23,6 +23,10 @@ class Topic < ActiveRecord::Base
 
   has_many :likes, dependent: :destroy
 
+  scope :ordered, order('created_at DESC')
+  scope :open, where('event_id IS NULL')
+  scope :finished, where('event_id IS NOT NULL')
+
   default_scope -> { where(label: Whitelabel[:label_id]) }
 
   def already_liked?(user)
