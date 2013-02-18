@@ -3,4 +3,6 @@
     h3= t("home.new_topics")
     ul.more-list.undone.clearfix
       - topics.each do |topic|
-        li= link_to_topic topic
+        li
+          = render 'topics/like', topic: topic
+          = link_to_topic topic

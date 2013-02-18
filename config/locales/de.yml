@@ -75,6 +75,7 @@ de:
   location:
     job_offers: "Jobangebote"
   topic:
+    likes: "+%{count} Likes"
     markdown: "Du kannst <a href='http://daringfireball.net/projects/markdown/syntax'>Markdown</a> in deiner Beschreibung verwenden, URLs werden automatisch verlinkt."
     twitter_message: "Neues Thema von @%{username} '%{name}' %{url}"
   event:

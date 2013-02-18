@@ -13,7 +13,6 @@ describe LikesController do
       @controller.stubs(:current_user => user)
       expect { post(:create, data) }.to change(Like, :count).by(1)
       controller.like.user.should eql(user)
-      flash[:notice].should_not be_nil
     end
 
     it "should not create a like if not signed in" do

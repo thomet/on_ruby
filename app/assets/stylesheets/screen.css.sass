@@ -160,6 +160,24 @@ nav
   margin: 0em
   height: 100%
 
+  .like_count
+    position: absolute
+    padding-left: 6px
+    font-size: 10px
+    font-style: italic
+    padding-top: 0.2em
+  .like
+    float: left
+    position: relative
+    padding-right: 5px
+    top: -7px
+  .liked
+    opacity: 0.4
+  .like_text
+    @include replace-text('/assets/thumb-up.png', 24, 24)
+    height: 24px
+    width: 24px
+
   .info
     background: url(/assets/information.png) left top no-repeat
     padding-left: 20px
