@@ -160,6 +160,15 @@ nav
   margin: 0em
   height: 100%
 
+  li.topic
+    background: url(/assets/topic.png) left top no-repeat
+    padding-left: 20px
+
+  .like
+    background: url(/assets/thumb-up.png) left top no-repeat
+    padding-top: 9px
+    padding-left: 30px
+
   .info
     background: url(/assets/information.png) left top no-repeat
     padding-left: 20px
@@ -233,20 +242,6 @@ nav
       text-decoration: none
     li
       padding-bottom: 1em
-  .whitelabel
-    font: bold 4em hero,arial,verdana,sans-serif
-    border: 1px solid white
-    @include border-radius(0.5em, 0.5em)
-    padding: 0.5em
-    background: url(/assets/black-Linen.png) left top repeat
-    img
-      vertical-align: middle
-    span.image
-      display: inline-block
-      width: 140px
-      text-align: center
-      img
-        max-width: 120px
 
   section
     padding: 2em
@@ -293,14 +288,6 @@ nav
     height: 40em
     border: 1px solid white
     @include border-radius(0.5em, 0.5em)
-
-  .stars
-    float: left
-    position: relative
-    top: -2px
-    img
-      padding-right: 5px
-
   .calendar-icon
     @include meta-icon("/assets/calendar.png")
   .map-icon
@@ -309,11 +296,9 @@ nav
     font-size: smaller
     font-style: italic
     padding-top: 0.2em
-
   .likes
     float: right
     margin-top: -5px
-
   .pagination
     padding-bottom: 2em
     a, em, span
@@ -325,7 +310,6 @@ nav
       text-decoration: none
       border: 1px solid #999
       @include border-radius(0.5em, 0.5em)
-
   .enumeration
     reset-counter:enumeration
     >li:nth-child(-n+9)
@@ -478,10 +462,21 @@ footer
   &#github_ribbon
     right: 0px
 
-//just front page
 #labels
-  .hint .close
-    display: none
-  header
-    padding: 5px
-
+  .main
+    padding-top: 3em
+    section
+      a
+        text-decoration: none
+      li
+        font: bold 3em hero,arial,verdana,sans-serif
+      img
+        vertical-align: middle
+      span.host
+        margin-left: 0.5em
+      span.image
+        display: inline-block
+        width: 140px
+        text-align: center
+        img
+          max-width: 120px

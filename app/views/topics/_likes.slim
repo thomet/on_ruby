@@ -1,0 +1,5 @@
+- if topic.likes.present?
+  h3= t 'topic.likes', count: topic.likes.size
+  ul
+    - topic.likes.each do |like|
+      li.like= link_to_user like.user

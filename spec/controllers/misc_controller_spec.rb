@@ -5,11 +5,11 @@ describe MiscController do
     render_views
 
     before(:each) do
-      create(:user)
+      create(:participant_user)
     end
 
     it "should render the :index template" do
-      get :sitemap, format: :xml
+      get :sitemap, label: 'hamburg', format: :xml
       response.should render_template(:sitemap)
       response.headers["Content-Type"].should eql("application/xml; charset=utf-8")
       response.body.should match("<loc>http://hamburg.test.host/")

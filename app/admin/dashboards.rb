@@ -13,10 +13,10 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
-    h2 "Wish Actions"
+    h2 "Topic Actions"
     ul do
-      Wish.by_status(:undone).collect do |wish|
-        item = wish.name + ": " + link_to("tweet", twitter_update_url(wish)) + " / " + link_to("for next Event", copy_admin_wish_path(wish))
+      Topic.undone.collect do |topic|
+        item = topic.name + ": " + link_to("tweet", twitter_update_url(topic)) + " / " + link_to("for next Event", copy_admin_topic_path(topic))
         li raw(item)
       end
     end

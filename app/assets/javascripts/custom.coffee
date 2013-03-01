@@ -84,15 +84,19 @@ HOR =
       else
         $(".jobs").filter(":hidden").first().fadeIn()
 
-  moreList: (name) ->
-    elements = $(name + " ul li")
-    if elements.size() > 5
-      elements.slice(5).hide()
-      $("<p><a class='more' href='#'>" + I18n.showMore + "</a></p>").insertAfter name + " ul"
-    $(name + " a.more").click (event) ->
-      event.preventDefault()
-      $(name + " ul li").filter(":hidden").fadeIn()
-      $(name + " a.more").parent().hide()
+  moreList: ->
+    for list in $("ul.more-list")
+      do (list) ->
+        elements = $(list).find "li"
+        if elements.size() > 5
+          elements.slice(5).hide()
+          link = $("<a class='more' href='#'>" + I18n.showMore + "</a>")
+          container = $("<p></p>").append link
+          container.insertAfter list
+          link.click (event) ->
+            event.preventDefault()
+            elements.filter(":hidden").fadeIn()
+            link.hide()
 
 $(document).ready ->
   HOR.loginNote()
@@ -100,13 +104,6 @@ $(document).ready ->
   HOR.close()
   HOR.showHide()
   HOR.scrollPage()
-  HOR.moreList "#events"
-  HOR.moreList "#undone"
-  HOR.moreList "#done"
-  HOR.moreList "#events_participated"
-  HOR.moreList "#organized_events"
-  HOR.moreList "#talks_done"
-  HOR.moreList "#provided_material"
-  HOR.moreList "#proposed_topics"
+  HOR.moreList()
   HOR.displayUsers()
   HOR.initializeMap()

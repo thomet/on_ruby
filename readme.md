@@ -23,12 +23,6 @@ For working with the whitelabel functionality, you need to add all supported sub
 
 Access via [http://onruby.dev:5000](http://onruby.dev:5000)
 
-### Twitter-Authentication
-
-You need [Twitter App credentials](https://dev.twitter.com) in order to have a working login.
-
-See *config/initializers/omniauth.rb* for details.
-
 ### Test-Data
 
 You don't need any to setup a new project! If you are a heroku project admin, you can dump Data from Heroku via [Taps Gem](https://devcenter.heroku.com/articles/taps):
@@ -52,7 +46,7 @@ There are just a couple of steps for your Ruby Usergroup Site to get alive:
 - create pull request
 - *lean back and wait :)*
 
-If you have a custom domain, you need to setup the CNAME of your domain to point to [heroku](https://devcenter.heroku.com/articles/custom-domains#dns_setup).
+If you have a custom domain, you need to setup the [CNAME of your domain to point to heroku](https://devcenter.heroku.com/articles/custom-domains#dns_setup).
 
 On the admin-site we need to:
 
@@ -80,9 +74,8 @@ ActiveAdmin is mounted under */admin* of your label, so it's *hamburg.onruby.de/
 - Users
 - Events
     - Materials
-    - Topics
 - Locations / Companies (Companies are just special Locations)
-- Wishes (Stuff that user can demand/propose)
+- Topics (Stuff that user can demand/propose)
 - Jobs (The Display on top of the Page)
 - Highlights (Special infos, that you want to display for a short period of time)
 
