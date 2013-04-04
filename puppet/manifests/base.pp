@@ -16,7 +16,6 @@ stage { 'first':
 node 'onruby' {
   class { 'apt': stage => first }
   include base
-  include heroku
   include capistrano
   include nginx
   include memcache
