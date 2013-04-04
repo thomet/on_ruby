@@ -16,6 +16,7 @@ stage { 'first':
 node 'onruby' {
   class { 'apt': stage => first }
   include base
+  include rvm
   include capistrano
   include nginx
   include memcache
