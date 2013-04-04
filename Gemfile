@@ -32,6 +32,7 @@ group :assets do
   gem "jquery_mobile_rails",  "1.2.0"
   gem "leaflet-rails",        "0.5.0"
   gem "compass-rails",        "1.0.3"
+  gem 'coffee-script-source', "~> 1.4.0"
   gem "coffee-rails",         "3.2.2"
   gem "chosen-rails",         "0.9.11.2"
   gem "uglifier",             "1.3.0"
