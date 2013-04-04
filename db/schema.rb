@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(:version => 20130228201117) do
     t.integer  "author_id"
     t.string   "author_type"
     t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "namespace"
   end
 
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(:version => 20130228201117) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "authorizations", ["user_id"], :name => "index_authorizations_on_user_id"
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(:version => 20130228201117) do
     t.text     "description"
     t.integer  "location_id"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.boolean  "published"
     t.string   "slug"
     t.string   "label",       :default => "hamburg"
@@ -92,14 +92,13 @@ ActiveRecord::Schema.define(:version => 20130228201117) do
     t.string   "zip"
     t.float    "lat"
     t.float    "long"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.boolean  "company"
     t.string   "label",        :default => "hamburg"
     t.string   "slug"
   end
 
-  add_index "locations", ["id"], :name => "index_locations_on_id"
   add_index "locations", ["slug"], :name => "index_locations_on_slug", :unique => true
 
   create_table "materials", :force => true do |t|
@@ -108,8 +107,8 @@ ActiveRecord::Schema.define(:version => 20130228201117) do
     t.string   "url"
     t.integer  "user_id"
     t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   add_index "materials", ["event_id"], :name => "index_materials_on_event_id"
@@ -120,8 +119,8 @@ ActiveRecord::Schema.define(:version => 20130228201117) do
     t.integer  "event_id"
     t.boolean  "maybe"
     t.text     "comment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "participants", ["event_id"], :name => "index_participants_on_event_id"
@@ -132,10 +131,10 @@ ActiveRecord::Schema.define(:version => 20130228201117) do
     t.string   "username"
     t.integer  "item"
     t.string   "table"
-    t.integer  "month"
-    t.integer  "year"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 5
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_histories_on_item_and_table_and_month_and_year"
@@ -158,22 +157,14 @@ ActiveRecord::Schema.define(:version => 20130228201117) do
     t.text     "description"
     t.integer  "user_id"
     t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "label",       :default => "hamburg"
     t.string   "slug"
   end
 
   add_index "topics", ["event_id"], :name => "index_topics_on_event_id"
   add_index "topics", ["user_id"], :name => "index_topics_on_user_id"
-
-  create_table "usergroups", :force => true do |t|
-    t.string   "name"
-    t.string   "url"
-    t.string   "twitter"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "users", :force => true do |t|
     t.string   "nickname"
@@ -182,8 +173,8 @@ ActiveRecord::Schema.define(:version => 20130228201117) do
     t.string   "url"
     t.string   "location"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "github"
     t.boolean  "admin"
     t.boolean  "freelancer"

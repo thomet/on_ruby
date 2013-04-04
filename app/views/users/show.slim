@@ -7,8 +7,9 @@ section
       = user.available? ? " / #{t("profile.available")}" : ''
 
     div.info.small
-      span
-        strong Twitter: #{link_to_twitter user}
+      - if user.twitter?
+        span
+          strong Twitter: #{link_to_twitter user}
       - if user.github?
         span
           strong Github: #{link_to_github user}
@@ -21,12 +22,12 @@ section
 
   = markdown user.description if user.description
 
-  - if user.participants.present?
+  - if user.participations.present?
     #events_participated
       h3= t("profile.events_participated")
       ul.more-list.enumeration
-        - user.participants.each do |p|
-          li= link_to p.event.name, p.event
+        - user.participations.each do |event|
+          li= link_to_event event
 
   - if user.events.present?
     #organized_events

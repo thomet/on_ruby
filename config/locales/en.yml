@@ -17,7 +17,8 @@ en:
   topics: "Topics"
   materials: "Additional Material"
   login:
-    profile: "Profile"
+    profile: "View Profile"
+    edit_profile: "Edit Profile"
     logout: "Logout"
     twitter_login: "Twitter Login"
     github_login: "GitHub Login"
