@@ -24,14 +24,15 @@ describe ExternalLinkHelper do
   end
 
   context "#twitter_update_url" do
-    let(:topic) { create(:topic) }
+    let(:topic) { create(:topic, name: "bla") }
     let(:event) { create(:event) }
 
     it "should generate a proper url for topics" do
+      topic.user.name = "Uschi"
+
       url = helper.twitter_update_url(topic)
       url.should match(Regexp.escape("http://twitter.com/home?status=Neues%20Thema%20von%20@Uschi"))
-      url.should match(Regexp.escape("The%20xing%20mobile%20website:%20touch.xing.com"))
-      url.should match(Regexp.escape("http://test.host/topics/the-xing-mobile-website-touch-xing-com"))
+      url.should match(Regexp.escape("http://test.host/topics/bla"))
     end
 
     it "should generate a proper url for events" do
