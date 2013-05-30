@@ -6,7 +6,7 @@ FactoryGirl.define do
     house_number    { Faker::Address.street_suffix }
     city            { Faker::Address.city }
     zip             { Faker::Address.zip_code }
-    lat             { "53.#{Faker::Address.zip_code}".to_i }
-    long            { "9.#{Faker::Address.zip_code}".to_i }
+    lat             { "53.5#{rand(1000)}".to_f }
+    long            { "9.9#{rand(1000)}".to_f }
   end
 end

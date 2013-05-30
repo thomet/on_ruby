@@ -25,7 +25,7 @@ describe ExternalLinkHelper do
 
   context "#twitter_update_url" do
     let(:topic) { create(:topic, name: "bla") }
-    let(:event) { create(:event) }
+    let(:event) { create(:event, name: "Weihnachtstreffen", date: "2010-12-06 11:47:30") }
 
     it "should generate a proper url for topics" do
       topic.user.name = "Uschi"
