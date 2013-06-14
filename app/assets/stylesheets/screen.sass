@@ -4,13 +4,7 @@
 @import "normalize"
 
 @font-face
-  font-family: hero
-  src: url("/assets/hero_light.otf") format("opentype")
-
-@font-face
-  font-family: hero
-  font-weight: bold
-  src: url("/assets/hero.otf") format("opentype")
+  font-family: Alef,sans-serif
 
 @mixin list-icon($icon)
   background: image-url($icon) left top no-repeat
@@ -24,7 +18,7 @@
 // Primary styles
 
 html
-  background: image-url('whitey.png') left top repeat
+  background: white
 
 body
   font: 13px/1.231 sans-serif
@@ -48,7 +42,7 @@ a
     color: #666
 
 .container
-  background: image-url('black-Linen.png') left top repeat
+  background: image-url('whitey.png') left top repeat
 
 // For image replacement
 .ir
@@ -81,23 +75,23 @@ header
   margin: 0 auto
   margin-bottom: 3em
   width: 60em
-  color: white
 
   #title, &:hover, &:active, &:visited
-    color: white
     text-decoration: none
     h1, h2
       padding: 0 0 7px 120px
-      font: bold 4em hero,arial,verdana,sans-serif
+      font: bold 3em Alef,sans-serif
+      @include text-shadow(white 1px 2px 3px)
     h2
-      font: bold 1.5em hero,arial,verdana,sans-serif
+      font: bold 1.5em Alef,sans-serif
+      @include text-shadow(white 1px 2px 3px)
   #login
     font-size: 10px
     float: right
     width: 140px
     padding: 1em
-    background: image-url('whitey.png') left top repeat
-    border: 1px solid white
+    background: white
+    border: 1px solid lightgray
     @include border-radius(0.5em, 0.5em)
     .user
       float: left
@@ -105,7 +99,7 @@ header
       img
         width: 48px
         height: 48px
-        border: 1px solid white
+        border: 1px solid lightgray
         @include border-radius(0.5em, 0.5em)
     h3
       color: #444
@@ -124,15 +118,20 @@ header
     float: left
 
 nav#nav
-  background: image-url('whitey.png') left top repeat
+  background: white
   text-align: center
   position: fixed
   top: 0
-  width: 100%
+  left: 50%
+  margin-left: -21em
+  width: 42em
   z-index: 100
-  font: bold 1.5em hero,arial,verdana,sans-serif
-  border-bottom: 1px solid white
-  padding: 0.5em 0em 0.5em 0em
+  font: bold 1.5em Alef,sans-serif
+  border-bottom: 1px solid lightgray
+  padding: 0.2em 0em 0.2em 0em
+  @include border-bottom-left-radius(0.5em)
+  @include border-bottom-right-radius(0.5em)
+  @include box-shadow(lightgray 0px 1px 10px)
 
   #locale
     float: right
@@ -141,8 +140,6 @@ nav#nav
       @include horizontal-list
       li
         margin: 0px
-      img
-        border: 1px solid lightgray
   ul
     margin: 0
     border: 0
@@ -150,8 +147,8 @@ nav#nav
     list-style: none outside
     overflow: hidden
   li
-    margin-left: 1em
-    margin-right: 1em
+    margin-left: 1.5em
+    margin-right: 1.5em
     padding-top: 2px
     float: left
 
@@ -240,7 +237,7 @@ nav#nav
       margin-right: 5px
       margin-bottom: 5px
       @include border-radius(5px)
-      border: 1px solid #bbb
+      border: 1px solid lightgray
       display: inline-block
 
   #usergroups, #railsgroups
@@ -256,14 +253,14 @@ nav#nav
     margin-top: 0em
     margin-bottom: 3em
     width: 56em
-    background: image-url('whitey.png') left top repeat
-    border: 1px solid white
+    background: white
+    border: 1px solid lightgray
     @include border-radius(0.5em, 0.5em)
 
     h2
-      font: bold 1.4em hero,arial,verdana,sans-serif
+      font: bold 1.4em Alef,sans-serif
     h3
-      font: bold 1.2em hero,arial,verdana,sans-serif
+      font: bold 1.2em Alef,sans-serif
     ul
       margin: 0em
     li
@@ -281,7 +278,7 @@ nav#nav
     img
       width: 48px
       height: 48px
-      border: 1px solid white
+      border: 1px solid lightgray
       @include border-radius(0.5em, 0.5em)
     ul
       list-style: none
@@ -292,7 +289,7 @@ nav#nav
   .map_canvas
     margin: 0 auto
     height: 40em
-    border: 1px solid white
+    border: 1px solid lightgray
     @include border-radius(0.5em, 0.5em)
   .calendar-icon
     @include meta-icon('calendar.png')
@@ -317,7 +314,7 @@ nav#nav
       display: inline block
       background-color: white
       font-size: larger
-      border: 1px solid #999
+      border: 1px solid lightgray
       @include border-radius(0.5em, 0.5em)
   .enumeration
     reset-counter:enumeration
@@ -374,9 +371,9 @@ nav#nav
     font-size: 1em
     padding: 10px 30px
     border-width: 1px
-    background: -webkit-gradient(linear, left top, left bottom, from(white), to(#D7D7D7), color-stop(10%, #F2F2F2), color-stop(50%, #C5C5C5), color-stop(50%, #BDBDBD))
-    background: -moz-linear-gradient(left top, left bottom, from(white), to(#D7D7D7), color-stop(10%, #F2F2F2), color-stop(50%, #C5C5C5), color-stop(50%, #BDBDBD))
-    border-color: #A6A6A6
+    background: -webkit-gradient(linear, left top, left bottom, from(white), to(#D7D7D7), color-stop(30%, #F2F2F2), color-stop(90%, #C5C5C5), color-stop(90%, #BDBDBD))
+    background: -moz-linear-gradient(left top, left bottom, from(white), to(#D7D7D7), color-stop(30%, #F2F2F2), color-stop(90%, #C5C5C5), color-stop(90%, #BDBDBD))
+    border-color: lightgray
     text-shadow: white 0px 1px 1px
     color: #222
 
@@ -398,6 +395,7 @@ footer
   padding: 0
   margin: 0
   border-top: 1px solid white
+  @include box-shadow(lightgray 0px 1px 10px)
 
   hr
     margin: 0 auto
@@ -413,7 +411,7 @@ footer
     width: 60em
 
     h2
-      font: bold 1.4em hero,arial,verdana,sans-serif
+      font: bold 1.4em Alef,sans-serif
       padding-bottom: 1em
     .block
       float: left
@@ -440,7 +438,6 @@ footer
 
 .ribbon_wrap
   position: absolute
-  top: 46px
   width: 150px
   height: 150px
   overflow: hidden
@@ -451,15 +448,14 @@ footer
     position: absolute
     top: 52px
     span
+      border: 1px solid lightgray
       background: white
-      color: #444
-      font-size: 14px
+      color: gray
+      font: 1.1em Alef,sans-serif
       padding: 5px 0
       display: block
       text-align: center
       width: 250px
-      @include box-shadow(#888 0px 1px 10px)
-      @include text-shadow(#888 0px 1px 10px)
     &#senor_developer
       @include rotate(-45deg)
       left: -65px
@@ -478,7 +474,7 @@ footer
       a
         text-decoration: none
       li
-        font: bold 3em hero,arial,verdana,sans-serif
+        font: bold 3em Alef,sans-serif
       img
         vertical-align: middle
       span.host
