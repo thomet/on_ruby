@@ -397,13 +397,8 @@ footer
   border-top: 1px solid white
   @include box-shadow(lightgray 0px 1px 10px)
 
-  hr
-    margin: 0 auto
-    height: 3px
-    background-color: white
-    border-top: 1px solid #ccc
-    border-bottom: 1px solid #ccc
-
+  .hr
+    border-bottom: 1px dashed lightgray
   section
     margin: 0 auto
     margin-bottom: 1em
@@ -415,7 +410,7 @@ footer
       padding-bottom: 1em
     .block
       float: left
-      margin: 3em 0em 1em 8em
+      padding: 3em 0em 1em 8em
 
       ul
         padding: 0
@@ -423,7 +418,6 @@ footer
         list-style: none
       li
         padding-bottom: 1em
-
     .usergroups, .railsgroups
       ol
         list-style: lower-greek
