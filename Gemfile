@@ -4,7 +4,7 @@ ruby "2.0.0"
 gem "thin",         require: false
 gem "foreman",      require: false
 
-gem "rails",                  "4.0.0.rc2"
+gem "rails",                  "4.0.0"
 gem "rails-observers",        "0.1.1"
 
 gem "slim-rails",             "2.0.1"
@@ -23,7 +23,7 @@ gem 'exception_notification', github: 'smartinez87/exception_notification'
 
 gem "formtastic",             "2.2.1"
 gem "kaminari",               "0.14.1"
-gem "typus",                  github: "fesplugas/typus"
+gem "typus",                  github: "fesplugas/typus", ref: "e8ce03b614b8dab086ea603b7edf3ad550d5f512"
 
 gem "jquery-rails",           "2.2.1"
 gem "jquery_mobile_rails",    "1.3.0"
