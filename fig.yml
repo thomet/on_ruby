@@ -1,0 +1,21 @@
+webserver:
+  build: .
+  command: foreman start
+  volumes:
+    - .:/var/www/
+  links:
+    - db
+  ports:
+    - "5000:5000"
+  environment:
+    DB_HOST: db
+    DB_USERNAME: myuser
+    DB_PASSWORD: mysecretpassword
+
+db:
+  image: postgres:9.4.0
+  ports:
+    - "5432"
+  environment:
+   POSTGRES_USER: myuser
+   POSTGRES_PASSWORD: mysecretpassword
